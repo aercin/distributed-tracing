@@ -1,6 +1,10 @@
 ﻿using core_application.Abstractions;
+using core_application.Models;
 using core_domain.Entities;
 using Dapper;
+using OpenTelemetry;
+using System.Diagnostics;
+using System.Text.Json;
 
 namespace core_infrastructure.Services
 {
@@ -9,14 +13,17 @@ namespace core_infrastructure.Services
         private readonly IEventDispatcher _eventDispatcher;
         private readonly IEnumerable<IDbConnectionFactory> _dbConnectionFactories;
         private readonly ICacheProvider _cacheProvider;
+        private readonly ICustomTracing _customTracing;
 
         public OutboxMessagePublisher(IEventDispatcher eventDispatcher,
                                       IEnumerable<IDbConnectionFactory> dbConnectionFactories,
-                                      ICacheProvider cacheProvider)
+                                      ICacheProvider cacheProvider,
+                                      ICustomTracing customTracing)
         {
             this._eventDispatcher = eventDispatcher;
             this._dbConnectionFactories = dbConnectionFactories;
             this._cacheProvider = cacheProvider;
+            this._customTracing = customTracing;
         }
 
         public async Task PublishOutboxMessages(string dbContext, string toBeSentTopic)
@@ -34,12 +41,13 @@ namespace core_infrastructure.Services
 
                 using (var connection = dbConnectionFactory.GetOpenConnection())
                 {
-                    string sql = $@"     SELECT
+                    string sql = $@"SELECT
                                           ""Id"",
                                           ""Type"",
                                           ""Message"",
-                                          ""CreatedOn""
-                                     FROM public.""OutboxMessages"" 
+                                          ""CreatedOn"",
+                                          ""TraceContext""
+                                        FROM public.""OutboxMessages"" 
                                 ";
 
                     var messages = await connection.QueryAsync<OutboxMessage>(sql);
@@ -48,9 +56,23 @@ namespace core_infrastructure.Services
                     {
                         try
                         {
-                            await this._eventDispatcher.DispatchEvent(toBeSentTopic, relatedOutBoxMessage.Message);
+                            //var traceHeaders = JsonSerializer.Deserialize<List<MessageHeader>>(relatedOutBoxMessage.TraceContext);
+                            //var parentTraceContext = this._customTracing.ExractTraceContextFromMessageHeaderList(traceHeaders);
+                            //Baggage.Current = parentTraceContext.Baggage;
 
-                            await connection.ExecuteAsync(@"DELETE FROM public.""OutboxMessages"" WHERE ""Id""=@Id", new { Id = relatedOutBoxMessage.Id });
+                            //using (var span = this._customTracing.ActivitySourceInstance.StartActivity($"send message to {toBeSentTopic}", ActivityKind.Producer, parentTraceContext.ActivityContext))
+                            //{
+                            //    await this._eventDispatcher.DispatchEvent(toBeSentTopic, relatedOutBoxMessage.Message);
+                            //}
+
+                            var traceHeaders = JsonSerializer.Deserialize<List<MessageHeader>>(relatedOutBoxMessage.TraceContext);
+
+                            await this._customTracing.StartActivity($"send message to {toBeSentTopic}", ActivityKind.Producer, traceHeaders, async () =>
+                            {
+                                await this._eventDispatcher.DispatchEvent(toBeSentTopic, relatedOutBoxMessage.Message);
+
+                                await connection.ExecuteAsync(@"DELETE FROM public.""OutboxMessages"" WHERE ""Id""=@Id", new { Id = relatedOutBoxMessage.Id });
+                            });
                         }
                         catch
                         {

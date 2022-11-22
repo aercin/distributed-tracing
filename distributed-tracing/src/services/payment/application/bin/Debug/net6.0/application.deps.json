@@ -112,7 +112,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
           "Microsoft.Extensions.Options": "6.0.0",
-          "System.Diagnostics.DiagnosticSource": "6.0.0"
+          "System.Diagnostics.DiagnosticSource": "7.0.0-rc.2.22472.3"
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {
@@ -152,14 +152,32 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/6.0.0": {
+      "OpenTelemetry.Api/1.4.0-beta.3": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "7.0.0-rc.2.22472.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Api.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.4.0.687"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/7.0.0-rc.2.22472.3": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.47203"
+          }
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "core-application/1.0.0": {
         "dependencies": {
+          "OpenTelemetry.Api": "1.4.0-beta.3",
           "core-domain": "1.0.0"
         },
         "runtime": {
@@ -271,12 +289,19 @@
       "path": "microsoft.extensions.primitives/6.0.0",
       "hashPath": "microsoft.extensions.primitives.6.0.0.nupkg.sha512"
     },
-    "System.Diagnostics.DiagnosticSource/6.0.0": {
+    "OpenTelemetry.Api/1.4.0-beta.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
-      "path": "system.diagnostics.diagnosticsource/6.0.0",
-      "hashPath": "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512"
+      "sha512": "sha512-i60lDHOXecHeLZmk4Pc7mSxvskHgcomzog5OdGX2+9z91BLPpruYUC4P+71i8nAXs4aTfGZ6NVrYFt8FPDUzPg==",
+      "path": "opentelemetry.api/1.4.0-beta.3",
+      "hashPath": "opentelemetry.api.1.4.0-beta.3.nupkg.sha512"
+    },
+    "System.Diagnostics.DiagnosticSource/7.0.0-rc.2.22472.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mOIufiBTm9Vi9laoGt+2bSUWA9WsmDlVYxv6xJ7yiF/VExElIFAiuLDiJxFEKnUVZCbL/pTwEikWs5C89K0VTA==",
+      "path": "system.diagnostics.diagnosticsource/7.0.0-rc.2.22472.3",
+      "hashPath": "system.diagnostics.diagnosticsource.7.0.0-rc.2.22472.3.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",

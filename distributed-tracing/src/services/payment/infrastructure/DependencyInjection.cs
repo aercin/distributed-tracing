@@ -7,8 +7,13 @@ using domain.Abstractions;
 using infrastructure.persistence;
 using infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace infrastructure
 {
@@ -25,7 +30,7 @@ namespace infrastructure
             });
 
             services.AddAsyncIntegrationStyleDependency(options =>
-            { 
+            {
                 options.BrokerAddress = config.GetValue<string>("Kafka:BootstrapServers");
                 options.ConsumerGroupId = config.GetValue<string>("Kafka:ConsumerGroupId");
             });
@@ -33,6 +38,7 @@ namespace infrastructure
             services.AddCoreInfrastructure<PaymentDbContext>(x =>
             {
                 x.ConnectionString = config.GetConnectionString("PaymentDb");
+                x.TraceActivitySourceName = config.GetValue<string>("Tracing:ActivitySourceName");
             });
 
             services.AddSingleton<IDbConnectionFactory, PostgreDbConnectionFactory>((serviceProvider) =>
@@ -43,7 +49,26 @@ namespace infrastructure
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IDomainEventToMessageMapper, DomainEventToMessageMapper>();
-           
+
+            services.AddOpenTelemetryTracing(options =>
+            {
+                options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("PaymentMicroService"));
+                options.SetSampler(new AlwaysOnSampler());
+                options.AddNpgsql();
+                options.AddHttpClientInstrumentation();
+                options.ConfigureBuilder((sp, builder) =>
+                {
+                    RedisCache cache = (RedisCache)sp.GetRequiredService<IDistributedCache>();
+                    builder.AddRedisInstrumentation(cache.GetConnection());
+                });
+                options.AddSource(config.GetValue<string>("Tracing:ActivitySourceName"));
+                options.AddJaegerExporter(opt =>
+                {
+                    opt.AgentHost = config.GetValue<string>("Jaeger:Host");
+                    opt.AgentPort = config.GetValue<int>("Jaeger:Port");
+                });
+            });
+
             return services;
         }
     }

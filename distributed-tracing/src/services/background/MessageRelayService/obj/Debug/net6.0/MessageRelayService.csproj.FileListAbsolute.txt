@@ -101,3 +101,8 @@ C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\
 C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\obj\Debug\net6.0\MessageRelayService.pdb
 C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\obj\Debug\net6.0\MessageRelayService.genruntimeconfig.cache
 C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\obj\Debug\net6.0\ref\MessageRelayService.dll
+C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\bin\Debug\net6.0\OpenTelemetry.dll
+C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\bin\Debug\net6.0\OpenTelemetry.Api.dll
+C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\bin\Debug\net6.0\OpenTelemetry.Exporter.Jaeger.dll
+C:\Users\aercin\Desktop\GithubRepos\distributed-tracing\distributed-tracing\src\services\background\MessageRelayService\bin\Debug\net6.0\OpenTelemetry.Extensions.Hosting.dll

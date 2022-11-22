@@ -14,6 +14,7 @@
           "Microsoft.Extensions.Caching.StackExchangeRedis": "6.0.10",
           "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.7",
+          "OpenTelemetry": "1.4.0-beta.3",
           "core-application": "1.0.0",
           "core-domain": "1.0.0"
         },
@@ -178,7 +179,7 @@
           "Microsoft.Extensions.DependencyInjection": "6.0.1",
           "Microsoft.Extensions.Logging": "6.0.0",
           "System.Collections.Immutable": "6.0.0",
-          "System.Diagnostics.DiagnosticSource": "6.0.0"
+          "System.Diagnostics.DiagnosticSource": "7.0.0-rc.2.22472.3"
         },
         "runtime": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.dll": {
@@ -247,6 +248,17 @@
           }
         }
       },
+      "Microsoft.Extensions.Configuration/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56504"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "6.0.0"
@@ -255,6 +267,28 @@
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "3.1.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56504"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.EnvironmentVariables/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "3.1.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56504"
           }
         }
       },
@@ -308,7 +342,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
           "Microsoft.Extensions.Options": "6.0.0",
-          "System.Diagnostics.DiagnosticSource": "6.0.0"
+          "System.Diagnostics.DiagnosticSource": "7.0.0-rc.2.22472.3"
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {
@@ -325,6 +359,18 @@
           }
         }
       },
+      "Microsoft.Extensions.Logging.Configuration/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "3.1.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Configuration.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56504"
+          }
+        }
+      },
       "Microsoft.Extensions.Options/6.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
@@ -334,6 +380,20 @@
           "lib/netstandard2.1/Microsoft.Extensions.Options.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "3.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.100.19.56504"
           }
         }
       },
@@ -399,6 +459,32 @@
           }
         }
       },
+      "OpenTelemetry/1.4.0-beta.3": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "3.1.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Microsoft.Extensions.Logging.Configuration": "3.1.0",
+          "Microsoft.Extensions.Options": "6.0.0",
+          "OpenTelemetry.Api": "1.4.0-beta.3"
+        },
+        "runtime": {
+          "lib/net6.0/OpenTelemetry.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.4.0.687"
+          }
+        }
+      },
+      "OpenTelemetry.Api/1.4.0-beta.3": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "7.0.0-rc.2.22472.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Api.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.4.0.687"
+          }
+        }
+      },
       "Pipelines.Sockets.Unofficial/2.2.0": {
         "dependencies": {
           "System.IO.Pipelines": "5.0.0"
@@ -439,9 +525,15 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/6.0.0": {
+      "System.Diagnostics.DiagnosticSource/7.0.0-rc.2.22472.3": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.47203"
+          }
         }
       },
       "System.Diagnostics.PerformanceCounter/5.0.0": {
@@ -557,6 +649,7 @@
       },
       "core-application/1.0.0": {
         "dependencies": {
+          "OpenTelemetry.Api": "1.4.0-beta.3",
           "core-domain": "1.0.0"
         },
         "runtime": {
@@ -646,12 +739,33 @@
       "path": "microsoft.extensions.caching.stackexchangeredis/6.0.10",
       "hashPath": "microsoft.extensions.caching.stackexchangeredis.6.0.10.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Lu41BWNmwhKr6LgyQvcYBOge0pPvmiaK8R5UHXX4//wBhonJyWcT2OK1mqYfEM5G7pTf31fPrpIHOT6sN7EGOA==",
+      "path": "microsoft.extensions.configuration/3.1.0",
+      "hashPath": "microsoft.extensions.configuration.3.1.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-qWzV9o+ZRWq+pGm+1dF+R7qTgTYoXvbyowRoBxQJGfqTpqDun2eteerjRQhq5PQ/14S+lqto3Ft4gYaRyl4rdQ==",
       "path": "microsoft.extensions.configuration.abstractions/6.0.0",
       "hashPath": "microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Binder/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o9eELDBfNkR7sUtYysFZ1Q7BQ1mYt27DMkups/3vu7xgPyOpMD+iAfrBZFzUXT2iw0fmFb8s1gfNBZS+IgjKdQ==",
+      "path": "microsoft.extensions.configuration.binder/3.1.0",
+      "hashPath": "microsoft.extensions.configuration.binder.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.EnvironmentVariables/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WryksPlAFFRMWIGpFwDDbrVSD/kSO7P7fRRzBHh6vEIrgflsM8tpPCcgIvKszH4fz4vcuapih9RMdiiJ2VS7aw==",
+      "path": "microsoft.extensions.configuration.environmentvariables/3.1.0",
+      "hashPath": "microsoft.extensions.configuration.environmentvariables.3.1.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/6.0.1": {
       "type": "package",
@@ -695,12 +809,26 @@
       "path": "microsoft.extensions.logging.abstractions/6.0.0",
       "hashPath": "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Logging.Configuration/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yW3nIoNM3T5iZg8bRViiCN4+vIU/02l+mlWSvKqWnr0Fd5Uk1zKdT9jBWKEcJhRIWKVWWSpFWXnM5yWoIAy1Eg==",
+      "path": "microsoft.extensions.logging.configuration/3.1.0",
+      "hashPath": "microsoft.extensions.logging.configuration.3.1.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Options/6.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-dzXN0+V1AyjOe2xcJ86Qbo233KHuLEY0njf/P2Kw8SfJU+d45HNS2ctJdnEnrWbM9Ye2eFgaC5Mj9otRMU6IsQ==",
       "path": "microsoft.extensions.options/6.0.0",
       "hashPath": "microsoft.extensions.options.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tx6gMKE3rDspA1YZT8SlQJmyt1BaBSl6mNjB3g0ZO6m3NnoavCifXkGeBuDk9Ae4XjW8C+dty52p+0u38jPRIQ==",
+      "path": "microsoft.extensions.options.configurationextensions/3.1.0",
+      "hashPath": "microsoft.extensions.options.configurationextensions.3.1.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Primitives/6.0.0": {
       "type": "package",
@@ -744,6 +872,20 @@
       "path": "npgsql.entityframeworkcore.postgresql/6.0.7",
       "hashPath": "npgsql.entityframeworkcore.postgresql.6.0.7.nupkg.sha512"
     },
+    "OpenTelemetry/1.4.0-beta.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F7Sm6Yuey0vqhgVduAasUaTHZq6eYctK+ZVrAw6sqzAdKZvxyNiBqVNFfScKgTx2+P3U1iFleXKw/ut84eQ15w==",
+      "path": "opentelemetry/1.4.0-beta.3",
+      "hashPath": "opentelemetry.1.4.0-beta.3.nupkg.sha512"
+    },
+    "OpenTelemetry.Api/1.4.0-beta.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i60lDHOXecHeLZmk4Pc7mSxvskHgcomzog5OdGX2+9z91BLPpruYUC4P+71i8nAXs4aTfGZ6NVrYFt8FPDUzPg==",
+      "path": "opentelemetry.api/1.4.0-beta.3",
+      "hashPath": "opentelemetry.api.1.4.0-beta.3.nupkg.sha512"
+    },
     "Pipelines.Sockets.Unofficial/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -772,12 +914,12 @@
       "path": "system.configuration.configurationmanager/5.0.0",
       "hashPath": "system.configuration.configurationmanager.5.0.0.nupkg.sha512"
     },
-    "System.Diagnostics.DiagnosticSource/6.0.0": {
+    "System.Diagnostics.DiagnosticSource/7.0.0-rc.2.22472.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
-      "path": "system.diagnostics.diagnosticsource/6.0.0",
-      "hashPath": "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512"
+      "sha512": "sha512-mOIufiBTm9Vi9laoGt+2bSUWA9WsmDlVYxv6xJ7yiF/VExElIFAiuLDiJxFEKnUVZCbL/pTwEikWs5C89K0VTA==",
+      "path": "system.diagnostics.diagnosticsource/7.0.0-rc.2.22472.3",
+      "hashPath": "system.diagnostics.diagnosticsource.7.0.0-rc.2.22472.3.nupkg.sha512"
     },
     "System.Diagnostics.PerformanceCounter/5.0.0": {
       "type": "package",

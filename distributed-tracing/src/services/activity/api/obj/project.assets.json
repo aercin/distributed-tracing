@@ -205,10 +205,10 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/6.0.7": {
+      "Microsoft.EntityFrameworkCore.Relational/6.0.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "6.0.7",
+          "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0"
         },
         "compile": {
@@ -271,6 +271,18 @@
           "lib/net6.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {}
         }
       },
+      "Microsoft.Extensions.Configuration/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {}
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -293,6 +305,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.EnvironmentVariables/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection/6.0.1": {
@@ -395,6 +419,19 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "Microsoft.Extensions.Logging.Configuration/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "3.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Configuration.dll": {}
+        }
+      },
       "Microsoft.Extensions.Options/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -406,6 +443,21 @@
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.Extensions.Options.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.0",
+          "Microsoft.Extensions.Configuration.Binder": "3.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.0",
+          "Microsoft.Extensions.Options": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
         }
       },
       "Microsoft.Extensions.Primitives/6.0.0": {
@@ -512,6 +564,114 @@
           "lib/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
         }
       },
+      "Npgsql.OpenTelemetry/6.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Npgsql": "6.0.7",
+          "OpenTelemetry.API": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Npgsql.OpenTelemetry.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Npgsql.OpenTelemetry.dll": {}
+        }
+      },
+      "OpenTelemetry/1.4.0-beta.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "3.1.0",
+          "Microsoft.Extensions.Logging": "3.1.0",
+          "Microsoft.Extensions.Logging.Configuration": "3.1.0",
+          "Microsoft.Extensions.Options": "5.0.0",
+          "OpenTelemetry.Api": "1.4.0-beta.3"
+        },
+        "compile": {
+          "lib/net6.0/OpenTelemetry.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/OpenTelemetry.dll": {}
+        }
+      },
+      "OpenTelemetry.Api/1.4.0-beta.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "7.0.0-rc.2.22472.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/OpenTelemetry.Api.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Api.dll": {}
+        }
+      },
+      "OpenTelemetry.Exporter.Jaeger/1.4.0-beta.3": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry": "1.4.0-beta.3",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/net6.0/OpenTelemetry.Exporter.Jaeger.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/OpenTelemetry.Exporter.Jaeger.dll": {}
+        }
+      },
+      "OpenTelemetry.Extensions.Hosting/1.0.0-rc9.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
+          "OpenTelemetry": "1.4.0-beta.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/OpenTelemetry.Extensions.Hosting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Extensions.Hosting.dll": {}
+        }
+      },
+      "OpenTelemetry.Instrumentation.AspNetCore/1.0.0-rc9.9": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry": "1.4.0-beta.3"
+        },
+        "compile": {
+          "lib/net6.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "OpenTelemetry.Instrumentation.Http/1.0.0-rc9.9": {
+        "type": "package",
+        "dependencies": {
+          "OpenTelemetry": "1.4.0-beta.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/OpenTelemetry.Instrumentation.Http.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Instrumentation.Http.dll": {}
+        }
+      },
+      "OpenTelemetry.Instrumentation.StackExchangeRedis/1.0.0-rc9.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "3.1.0",
+          "OpenTelemetry.Api": "[1.3.0, 2.0.0)",
+          "StackExchange.Redis": "[2.1.58, 3.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/OpenTelemetry.Instrumentation.StackExchangeRedis.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/OpenTelemetry.Instrumentation.StackExchangeRedis.dll": {}
+        }
+      },
       "Pipelines.Sockets.Unofficial/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -616,7 +776,7 @@
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
         }
       },
-      "System.Diagnostics.DiagnosticSource/6.0.0": {
+      "System.Diagnostics.DiagnosticSource/7.0.0-rc.2.22472.3": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -628,7 +788,7 @@
           "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Diagnostics.PerformanceCounter/5.0.0": {
@@ -770,6 +930,15 @@
           }
         }
       },
+      "System.Threading.Tasks.Extensions/4.5.4": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
       "System.Windows.Extensions/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -810,6 +979,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "OpenTelemetry.Api": "1.4.0-beta.3",
           "core-domain": "1.0.0"
         },
         "compile": {
@@ -839,6 +1009,7 @@
           "Microsoft.Extensions.Caching.StackExchangeRedis": "6.0.10",
           "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.7",
+          "OpenTelemetry": "1.4.0-beta.3",
           "core-application": "1.0.0",
           "core-domain": "1.0.0"
         },
@@ -879,7 +1050,14 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.10",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "Npgsql.OpenTelemetry": "6.0.7",
+          "OpenTelemetry.Exporter.Jaeger": "1.4.0-beta.3",
+          "OpenTelemetry.Extensions.Hosting": "1.0.0-rc9.9",
+          "OpenTelemetry.Instrumentation.AspNetCore": "1.0.0-rc9.9",
+          "OpenTelemetry.Instrumentation.Http": "1.0.0-rc9.9",
+          "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.0.0-rc9.7",
           "application": "1.0.0",
           "core-infrastructure": "1.0.0",
           "core-messages": "1.0.0"
@@ -1065,17 +1243,17 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/6.0.7": {
-      "sha512": "0uo4fPDHutMbd9AJJEKl2q/2fYuFGA8tEBE2fQeQFaNDd+F/aUjaXc1FUD84J7Wcax8WP40rZo1E0u9A0yPPZw==",
+    "Microsoft.EntityFrameworkCore.Relational/6.0.10": {
+      "sha512": "8rjVzKtGSTojSefghXqh3Y2wq8A7P7iWuUQQyQieXNYrYA7nw2aHZI2rjU+7ta4jHgKITddUHFaPQJ69H18dQA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/6.0.7",
+      "path": "microsoft.entityframeworkcore.relational/6.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.6.0.7.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.6.0.10.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
@@ -1163,6 +1341,22 @@
         "microsoft.extensions.caching.stackexchangeredis.nuspec"
       ]
     },
+    "Microsoft.Extensions.Configuration/3.1.0": {
+      "sha512": "Lu41BWNmwhKr6LgyQvcYBOge0pPvmiaK8R5UHXX4//wBhonJyWcT2OK1mqYfEM5G7pTf31fPrpIHOT6sN7EGOA==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.3.1.0.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
       "sha512": "qWzV9o+ZRWq+pGm+1dF+R7qTgTYoXvbyowRoBxQJGfqTpqDun2eteerjRQhq5PQ/14S+lqto3Ft4gYaRyl4rdQ==",
       "type": "package",
@@ -1199,6 +1393,22 @@
         "microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
         "microsoft.extensions.configuration.binder.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.EnvironmentVariables/3.1.0": {
+      "sha512": "WryksPlAFFRMWIGpFwDDbrVSD/kSO7P7fRRzBHh6vEIrgflsM8tpPCcgIvKszH4fz4vcuapih9RMdiiJ2VS7aw==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.environmentvariables/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
+        "microsoft.extensions.configuration.environmentvariables.3.1.0.nupkg.sha512",
+        "microsoft.extensions.configuration.environmentvariables.nuspec",
+        "packageIcon.png"
       ]
     },
     "Microsoft.Extensions.DependencyInjection/6.0.1": {
@@ -1387,6 +1597,22 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Extensions.Logging.Configuration/3.1.0": {
+      "sha512": "yW3nIoNM3T5iZg8bRViiCN4+vIU/02l+mlWSvKqWnr0Fd5Uk1zKdT9jBWKEcJhRIWKVWWSpFWXnM5yWoIAy1Eg==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.configuration/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Configuration.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Logging.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.xml",
+        "microsoft.extensions.logging.configuration.3.1.0.nupkg.sha512",
+        "microsoft.extensions.logging.configuration.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Microsoft.Extensions.Options/6.0.0": {
       "sha512": "dzXN0+V1AyjOe2xcJ86Qbo233KHuLEY0njf/P2Kw8SfJU+d45HNS2ctJdnEnrWbM9Ye2eFgaC5Mj9otRMU6IsQ==",
       "type": "package",
@@ -1406,6 +1632,22 @@
         "microsoft.extensions.options.6.0.0.nupkg.sha512",
         "microsoft.extensions.options.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0": {
+      "sha512": "tx6gMKE3rDspA1YZT8SlQJmyt1BaBSl6mNjB3g0ZO6m3NnoavCifXkGeBuDk9Ae4XjW8C+dty52p+0u38jPRIQ==",
+      "type": "package",
+      "path": "microsoft.extensions.options.configurationextensions/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "microsoft.extensions.options.configurationextensions.3.1.0.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.nuspec",
+        "packageIcon.png"
       ]
     },
     "Microsoft.Extensions.Primitives/6.0.0": {
@@ -1657,6 +1899,143 @@
         "postgresql.png"
       ]
     },
+    "Npgsql.OpenTelemetry/6.0.7": {
+      "sha512": "Y+JN0FaYWJbWfBw3+rclE3viX/3WeVZ9EL0pqBSMIpNSjGEjNcXm3b/0UoSheHiVpcFAA5sEtL6i/TQfZoiejQ==",
+      "type": "package",
+      "path": "npgsql.opentelemetry/6.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/netstandard2.0/Npgsql.OpenTelemetry.dll",
+        "lib/netstandard2.0/Npgsql.OpenTelemetry.xml",
+        "npgsql.opentelemetry.6.0.7.nupkg.sha512",
+        "npgsql.opentelemetry.nuspec",
+        "postgresql.png"
+      ]
+    },
+    "OpenTelemetry/1.4.0-beta.3": {
+      "sha512": "F7Sm6Yuey0vqhgVduAasUaTHZq6eYctK+ZVrAw6sqzAdKZvxyNiBqVNFfScKgTx2+P3U1iFleXKw/ut84eQ15w==",
+      "type": "package",
+      "path": "opentelemetry/1.4.0-beta.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/OpenTelemetry.dll",
+        "lib/net462/OpenTelemetry.xml",
+        "lib/net6.0/OpenTelemetry.dll",
+        "lib/net6.0/OpenTelemetry.xml",
+        "lib/netstandard2.0/OpenTelemetry.dll",
+        "lib/netstandard2.0/OpenTelemetry.xml",
+        "lib/netstandard2.1/OpenTelemetry.dll",
+        "lib/netstandard2.1/OpenTelemetry.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.1.4.0-beta.3.nupkg.sha512",
+        "opentelemetry.nuspec"
+      ]
+    },
+    "OpenTelemetry.Api/1.4.0-beta.3": {
+      "sha512": "i60lDHOXecHeLZmk4Pc7mSxvskHgcomzog5OdGX2+9z91BLPpruYUC4P+71i8nAXs4aTfGZ6NVrYFt8FPDUzPg==",
+      "type": "package",
+      "path": "opentelemetry.api/1.4.0-beta.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/OpenTelemetry.Api.dll",
+        "lib/net462/OpenTelemetry.Api.xml",
+        "lib/netstandard2.0/OpenTelemetry.Api.dll",
+        "lib/netstandard2.0/OpenTelemetry.Api.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.api.1.4.0-beta.3.nupkg.sha512",
+        "opentelemetry.api.nuspec"
+      ]
+    },
+    "OpenTelemetry.Exporter.Jaeger/1.4.0-beta.3": {
+      "sha512": "FeKNDK3t37LALstNDmPHRAuKqBeOFiDizPu+LorlIBLRCGbaG5Pr8KpimEqMv4lgRDDuiSwXhHJFaTXHphhSfQ==",
+      "type": "package",
+      "path": "opentelemetry.exporter.jaeger/1.4.0-beta.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/OpenTelemetry.Exporter.Jaeger.dll",
+        "lib/net462/OpenTelemetry.Exporter.Jaeger.xml",
+        "lib/net6.0/OpenTelemetry.Exporter.Jaeger.dll",
+        "lib/net6.0/OpenTelemetry.Exporter.Jaeger.xml",
+        "lib/netstandard2.0/OpenTelemetry.Exporter.Jaeger.dll",
+        "lib/netstandard2.0/OpenTelemetry.Exporter.Jaeger.xml",
+        "lib/netstandard2.1/OpenTelemetry.Exporter.Jaeger.dll",
+        "lib/netstandard2.1/OpenTelemetry.Exporter.Jaeger.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.exporter.jaeger.1.4.0-beta.3.nupkg.sha512",
+        "opentelemetry.exporter.jaeger.nuspec"
+      ]
+    },
+    "OpenTelemetry.Extensions.Hosting/1.0.0-rc9.9": {
+      "sha512": "AElT2zfaj2O6x7WXNKe0kle2kWXGr2Urg+R4CUtlGb/u8OWS/YvQRgwjzlpXx9nuoPqpMLfBa0cB4KPT9swklw==",
+      "type": "package",
+      "path": "opentelemetry.extensions.hosting/1.0.0-rc9.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/OpenTelemetry.Extensions.Hosting.dll",
+        "lib/netstandard2.0/OpenTelemetry.Extensions.Hosting.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.extensions.hosting.1.0.0-rc9.9.nupkg.sha512",
+        "opentelemetry.extensions.hosting.nuspec"
+      ]
+    },
+    "OpenTelemetry.Instrumentation.AspNetCore/1.0.0-rc9.9": {
+      "sha512": "H8eAUYy/Fb1cR0Lti5TZBRiECQXgnf0JzrIgfWZQDst+74Fwd4nXTVtPRxpCPjF9EVv+RlbB1RnEb3EmMonCHg==",
+      "type": "package",
+      "path": "opentelemetry.instrumentation.aspnetcore/1.0.0-rc9.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/OpenTelemetry.Instrumentation.AspNetCore.dll",
+        "lib/net6.0/OpenTelemetry.Instrumentation.AspNetCore.xml",
+        "lib/net7.0/OpenTelemetry.Instrumentation.AspNetCore.dll",
+        "lib/net7.0/OpenTelemetry.Instrumentation.AspNetCore.xml",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.AspNetCore.dll",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.AspNetCore.xml",
+        "lib/netstandard2.1/OpenTelemetry.Instrumentation.AspNetCore.dll",
+        "lib/netstandard2.1/OpenTelemetry.Instrumentation.AspNetCore.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.instrumentation.aspnetcore.1.0.0-rc9.9.nupkg.sha512",
+        "opentelemetry.instrumentation.aspnetcore.nuspec"
+      ]
+    },
+    "OpenTelemetry.Instrumentation.Http/1.0.0-rc9.9": {
+      "sha512": "/B2h0VnyN0o5HMnUjlV8t1Znw1Iw34j76B0E4Gn6+3Fc1bvbk3nu5jHTN0sP487WZE7IcoDwfK0D3rM5UDModQ==",
+      "type": "package",
+      "path": "opentelemetry.instrumentation.http/1.0.0-rc9.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/OpenTelemetry.Instrumentation.Http.dll",
+        "lib/net462/OpenTelemetry.Instrumentation.Http.xml",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.Http.dll",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.Http.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.instrumentation.http.1.0.0-rc9.9.nupkg.sha512",
+        "opentelemetry.instrumentation.http.nuspec"
+      ]
+    },
+    "OpenTelemetry.Instrumentation.StackExchangeRedis/1.0.0-rc9.7": {
+      "sha512": "9tfCTWtO6FrTQ1/Vp39O/RWITBgeMD0rVPPEciU8NZ8+ePa644lmQyy8AOWv3DEJHo9NH1t+9FFZiM2XRGIBpw==",
+      "type": "package",
+      "path": "opentelemetry.instrumentation.stackexchangeredis/1.0.0-rc9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/OpenTelemetry.Instrumentation.StackExchangeRedis.dll",
+        "lib/net462/OpenTelemetry.Instrumentation.StackExchangeRedis.xml",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.StackExchangeRedis.dll",
+        "lib/netstandard2.0/OpenTelemetry.Instrumentation.StackExchangeRedis.xml",
+        "opentelemetry-icon-color.png",
+        "opentelemetry.instrumentation.stackexchangeredis.1.0.0-rc9.7.nupkg.sha512",
+        "opentelemetry.instrumentation.stackexchangeredis.nuspec"
+      ]
+    },
     "Pipelines.Sockets.Unofficial/2.2.0": {
       "sha512": "7hzHplEIVOGBl5zOQZGX/DiJDHjq+RVRVrYgDiqXb6RriqWAdacXxp+XO9WSrATCEXyNOUOQg9aqQArsjase/A==",
       "type": "package",
@@ -1829,27 +2208,29 @@
         "version.txt"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/6.0.0": {
-      "sha512": "frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
+    "System.Diagnostics.DiagnosticSource/7.0.0-rc.2.22472.3": {
+      "sha512": "mOIufiBTm9Vi9laoGt+2bSUWA9WsmDlVYxv6xJ7yiF/VExElIFAiuLDiJxFEKnUVZCbL/pTwEikWs5C89K0VTA==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/6.0.0",
+      "path": "system.diagnostics.diagnosticsource/7.0.0-rc.2.22472.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Diagnostics.DiagnosticSource.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Diagnostics.DiagnosticSource.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Diagnostics.DiagnosticSource.dll",
-        "lib/net461/System.Diagnostics.DiagnosticSource.xml",
-        "lib/net5.0/System.Diagnostics.DiagnosticSource.dll",
-        "lib/net5.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net462/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net462/System.Diagnostics.DiagnosticSource.xml",
         "lib/net6.0/System.Diagnostics.DiagnosticSource.dll",
         "lib/net6.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net7.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net7.0/System.Diagnostics.DiagnosticSource.xml",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.7.0.0-rc.2.22472.3.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2200,6 +2581,43 @@
         "runtimes/win/lib/uap10.0.16299/_._",
         "system.security.principal.windows.5.0.0.nupkg.sha512",
         "system.security.principal.windows.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "sha512": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "type": "package",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Threading.Tasks.Extensions.dll",
+        "lib/net461/System.Threading.Tasks.Extensions.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netcoreapp2.1/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]

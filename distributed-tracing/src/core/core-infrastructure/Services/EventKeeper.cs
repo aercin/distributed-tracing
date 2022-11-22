@@ -34,7 +34,9 @@ namespace core_infrastructure.Services
 
                 var integrationEventMessage = JsonSerializer.Serialize(integrationEvent, integrationEvent.GetType());
 
-                await _context.Set<OutboxMessage>().AddAsync(OutboxMessage.CreateOutboxMessage(integrationEvent.GetType().AssemblyQualifiedName, integrationEventMessage, _systemClock.Current, string.Empty));
+                var traceContext = JsonSerializer.Serialize(this._serviceProvider.GetRequiredService<ICustomTracing>().InjectTraceContextToMessageHeaderList());
+
+                await _context.Set<OutboxMessage>().AddAsync(OutboxMessage.CreateOutboxMessage(integrationEvent.GetType().AssemblyQualifiedName, integrationEventMessage, _systemClock.Current, traceContext));
             });
 
             await Task.WhenAll(tasks);

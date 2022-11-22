@@ -10,7 +10,7 @@ namespace core_infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddCoreInfrastructure<T>(this IServiceCollection services, Action<DependencyOptions> options) where T: DbContext
+        public static IServiceCollection AddCoreInfrastructure<T>(this IServiceCollection services, Action<DependencyOptions> options) where T : DbContext
         {
             services.AddScoped<ISystemClock, SystemClock>();
             services.AddScoped<IEventKeeper, EventKeeper<T>>();
@@ -23,12 +23,18 @@ namespace core_infrastructure
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             services.AddDbContext<T>(options => options.UseNpgsql(dependencyOptions.Value.ConnectionString));
 
+            services.AddSingleton<ICustomTracing, CustomTracing>((serviceProvider) =>
+            {
+                return new CustomTracing(dependencyOptions.Value.TraceActivitySourceName);
+            });
+
             return services;
         }
 
         public sealed class DependencyOptions
         {
             public string ConnectionString { get; set; }
+            public string TraceActivitySourceName { get; set; }
         }
     }
 }

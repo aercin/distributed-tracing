@@ -8,7 +8,7 @@ namespace MessageRelayService
     {
         private readonly ILogger<ActivityWorker> _logger;
         private readonly IConfiguration _configuration;
-        private readonly IOutboxMessagePublisher _outboxMessagePublisher;
+        private readonly IOutboxMessagePublisher _outboxMessagePublisher; 
         public ActivityWorker(ILogger<ActivityWorker> logger,
                               IConfiguration configuration,
                               IOutboxMessagePublisher outboxMessagePublisher)
@@ -25,7 +25,7 @@ namespace MessageRelayService
             while (await timer.WaitForNextTickAsync(stoppingToken))
             {
                 _logger.LogInformation("Activity Message Relay Service is running at: {time}", DateTime.Now);
-                
+
                 await this._outboxMessagePublisher.PublishOutboxMessages("activity", _configuration.GetValue<string>("Kafka:PublishTopic:ToActivityService"));
             }
         }

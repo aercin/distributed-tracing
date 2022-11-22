@@ -1,4 +1,5 @@
-﻿using domain.Abstractions;
+﻿using core_application.Abstractions;
+using domain.Abstractions;
 using domain.Entities;
 using MediatR;
 
@@ -17,18 +18,23 @@ namespace application
         public class CommandHandler : IRequestHandler<Command, Response>
         {
             private readonly IUnitOfWork _uow;
-            public CommandHandler(IUnitOfWork uow)
+            private readonly ICustomTracing _customTracing;
+            public CommandHandler(IUnitOfWork uow, ICustomTracing customTracing)
             {
                 this._uow = uow;
+                this._customTracing = customTracing;
             }
 
             public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
             {
-                var newActivity = Activity.CreateActivity(request.Description, request.StartDate, request.EndDate, request.Amount);
+                await this._customTracing.StartActivity("create activity command handler", System.Diagnostics.ActivityKind.Internal, null, async () =>
+                {
+                    var newActivity = Activity.CreateActivity(request.Description, request.StartDate, request.EndDate, request.Amount);
 
-                this._uow.Activities.Add(newActivity);
+                    this._uow.Activities.Add(newActivity);
 
-                await this._uow.CompleteAsync();
+                    await this._uow.CompleteAsync();
+                });
 
                 return new Response { IsSuccess = true };
             }
