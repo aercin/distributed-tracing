@@ -1,6 +1,7 @@
 ﻿using application;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace api.Controllers
 {
@@ -31,7 +32,7 @@ namespace api.Controllers
         [Route("AddAttendant")]
         [HttpPost]
         public async Task<IActionResult> AddAttendantToActivity(AddAttendant.Command request)
-        {
+        {  
             return Ok(await this._mediator.Send(request));
         }
     }

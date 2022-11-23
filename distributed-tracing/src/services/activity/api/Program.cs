@@ -1,6 +1,7 @@
 using api.Consumers;
 using application;
 using infrastructure;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,13 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("trace-id", Activity.Current?.TraceId.ToString() ?? string.Empty);
+
+    await next();
+});
 
 app.MapHealthChecks();
 
