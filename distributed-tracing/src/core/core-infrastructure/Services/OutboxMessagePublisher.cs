@@ -69,6 +69,8 @@ namespace core_infrastructure.Services
                         }
                     }
                 }
+
+                await this._cacheProvider.RemoveAsync("IsOutboxMessagePublisherThreadSafe");
             }
         }
     }
