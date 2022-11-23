@@ -7,21 +7,7 @@ using System.Diagnostics;
 namespace core_infrastructure.Services
 {
     public class CustomTracing : ICustomTracing
-    {
-        //private string _libraryName;
-        //public CustomTracing(string libraryName)
-        //{
-        //    this._libraryName = libraryName;
-        //}
-
-        //public ActivitySource ActivitySourceInstance
-        //{
-        //    get
-        //    {
-        //        return new ActivitySource(this._libraryName);
-        //    }
-        //}
-
+    { 
         private ActivitySource activitySourceInstance;
 
         public CustomTracing(string libraryName)
@@ -45,27 +31,6 @@ namespace core_infrastructure.Services
 
             return messageHeaders;
         }
-
-        //public PropagationContext ExractTraceContextFromMessageHeaderList(List<MessageHeader> messageHeaders)
-        //{
-        //    TextMapPropagator propagator = Propagators.DefaultTextMapPropagator;
-        //    var parentTraceContext = propagator.Extract(default, messageHeaders, (messageHeaders, key) =>
-        //    {
-        //        try
-        //        {
-        //            var header = messageHeaders.SingleOrDefault(x => x.Key == key);
-        //            return new[] { header.Value };
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //        }
-        //        return Enumerable.Empty<string>();
-        //    });
-
-        //    return parentTraceContext;
-        //}
-
 
         public async Task StartActivity(string name, ActivityKind kind, List<MessageHeader> parentTraceHeaders, Func<Task> traceLogic)
         {
