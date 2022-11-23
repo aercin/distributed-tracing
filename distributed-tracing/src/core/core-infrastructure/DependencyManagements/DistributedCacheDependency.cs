@@ -9,7 +9,7 @@ namespace core_infrastructure.DependencyManagements
 {
     public static class DistributedCacheDependency
     {
-        public static IServiceCollection AddDistributedCaching(this IServiceCollection services, Action<Options> options)
+        public static IServiceCollection AddDistributedCaching(this IServiceCollection services, Action<Options> options, out string connStr)
         {
             var dependencyOptions = new Options();
             options(dependencyOptions);
@@ -26,16 +26,18 @@ namespace core_infrastructure.DependencyManagements
                 DefaultDatabase = dependencyOptions.RedisDefaultDb
             };
 
+            connStr = configOption.ToString();
+
             services.AddStackExchangeRedisCache(config =>
             {
                 config.Configuration = configOption.ToString();
-            }); 
+            });
 
             return services;
         }
 
         public sealed class Options
-        { 
+        {
             public string RedisHost { get; set; }
             public int RedisPort { get; set; }
             public string RedisPassword { get; set; }
@@ -51,6 +53,6 @@ namespace core_infrastructure.DependencyManagements
             var fi = typeof(RedisCache).GetField("_connection", BindingFlags.Instance | BindingFlags.NonPublic);
             var connection = (ConnectionMultiplexer)fi.GetValue(cache);
             return connection;
-        } 
+        }
     }
 }

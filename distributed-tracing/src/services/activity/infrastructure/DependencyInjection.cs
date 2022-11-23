@@ -4,8 +4,12 @@ using core_infrastructure.DependencyManagements;
 using core_infrastructure.Persistence;
 using core_infrastructure.Services;
 using domain.Abstractions;
+using HealthChecks.UI.Client;
 using infrastructure.persistence;
 using infrastructure.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
@@ -27,7 +31,7 @@ namespace infrastructure
                 options.RedisPort = config.GetValue<int>("Redis:Port");
                 options.RedisPassword = config.GetValue<string>("Redis:Password");
                 options.RedisDefaultDb = config.GetValue<int>("Redis:DefaultDb");
-            });
+            }, out string redisConnStr);
 
             services.AddAsyncIntegrationStyleDependency(options =>
             {
@@ -69,7 +73,25 @@ namespace infrastructure
                 });
             });
 
+            services.AddHealthChecks()
+                    .AddNpgSql(config.GetConnectionString("ActivityDb"), name: "postgre")
+                    .AddRedis(redisConnStr, name: "redis")
+                    .AddKafka(setup =>
+                    {
+                        setup.BootstrapServers = config.GetValue<string>("Kafka:BootstrapServers");
+                        setup.MessageTimeoutMs = 5000;
+                    }, name: "kafka");
+
             return services;
+        }
+
+        public static void MapHealthChecks(this IEndpointRouteBuilder endpoints)
+        {
+            endpoints.MapHealthChecks("/health", new HealthCheckOptions
+            {
+                Predicate = reg => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
         }
     }
 }

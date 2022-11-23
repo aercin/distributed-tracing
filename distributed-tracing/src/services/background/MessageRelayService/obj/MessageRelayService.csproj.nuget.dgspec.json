@@ -261,6 +261,22 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AspNetCore.HealthChecks.Kafka": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "AspNetCore.HealthChecks.NpgSql": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "AspNetCore.HealthChecks.Redis": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "AspNetCore.HealthChecks.UI.Client": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
@@ -276,6 +292,10 @@
             "OpenTelemetry.Extensions.Hosting": {
               "target": "Package",
               "version": "[1.0.0-rc9.9, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
             }
           },
           "imports": [
@@ -289,6 +309,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

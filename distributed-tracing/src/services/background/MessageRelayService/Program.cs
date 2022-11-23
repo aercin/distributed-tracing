@@ -2,54 +2,77 @@ using core_application.Abstractions;
 using core_infrastructure.DependencyManagements;
 using core_infrastructure.Persistence;
 using core_infrastructure.Services;
+using HealthChecks.UI.Client;
 using MessageRelayService;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices((hostContext, services) =>
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+builder.Services.AddDistributedCaching(options =>
+{
+    options.RedisHost = builder.Configuration.GetValue<string>("Redis:Host");
+    options.RedisPort = builder.Configuration.GetValue<int>("Redis:Port");
+    options.RedisPassword = builder.Configuration.GetValue<string>("Redis:Password");
+    options.RedisDefaultDb = builder.Configuration.GetValue<int>("Redis:DefaultDb");
+}, out string redisConnStr);
+
+builder.Services.AddAsyncIntegrationStyleDependency(options =>
+{
+    options.BrokerAddress = builder.Configuration.GetValue<string>("Kafka:BootstrapServers");
+});
+builder.Services.AddSingleton<IDbConnectionFactory, PostgreDbConnectionFactory>((serviceProvider) =>
+{
+    return new PostgreDbConnectionFactory("activity", builder.Configuration.GetConnectionString("ActivityDb"));
+});
+builder.Services.AddSingleton<IDbConnectionFactory, PostgreDbConnectionFactory>((serviceProvider) =>
+{
+    return new PostgreDbConnectionFactory("payment", builder.Configuration.GetConnectionString("PaymentDb"));
+});
+builder.Services.AddSingleton<IOutboxMessagePublisher, OutboxMessagePublisher>();
+builder.Services.AddHostedService<ActivityWorker>();
+builder.Services.AddHostedService<PaymentWorker>();
+
+builder.Services.AddSingleton<ICustomTracing, CustomTracing>((serviceProvider) =>
+{
+    return new CustomTracing(builder.Configuration.GetValue<string>("Tracing:ActivitySourceName"));
+});
+
+builder.Services.AddOpenTelemetryTracing(options =>
+{
+    options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("MessageRelayService"));
+    options.SetSampler(new AlwaysOnSampler());
+    options.AddSource(builder.Configuration.GetValue<string>("Tracing:ActivitySourceName"));
+    options.AddJaegerExporter(opt =>
     {
-        services.AddDistributedCaching(options =>
-        {
-            options.RedisHost = hostContext.Configuration.GetValue<string>("Redis:Host");
-            options.RedisPort = hostContext.Configuration.GetValue<int>("Redis:Port");
-            options.RedisPassword = hostContext.Configuration.GetValue<string>("Redis:Password");
-            options.RedisDefaultDb = hostContext.Configuration.GetValue<int>("Redis:DefaultDb");
-        });
+        opt.AgentHost = builder.Configuration.GetValue<string>("Jaeger:Host");
+        opt.AgentPort = builder.Configuration.GetValue<int>("Jaeger:Port");
+    });
+});
 
-        services.AddAsyncIntegrationStyleDependency(options =>
+builder.Services.AddHealthChecks()
+        .AddNpgSql(builder.Configuration.GetConnectionString("ActivityDb"), name: "postgre-activity-db")
+        .AddNpgSql(builder.Configuration.GetConnectionString("PaymentDb"), name: "postgre-payment-db")
+        .AddRedis(redisConnStr, name: "redis")
+        .AddKafka(setup =>
         {
-            options.BrokerAddress = hostContext.Configuration.GetValue<string>("Kafka:BootstrapServers");
-        });
-        services.AddSingleton<IDbConnectionFactory, PostgreDbConnectionFactory>((serviceProvider) =>
-        {
-            return new PostgreDbConnectionFactory("activity", hostContext.Configuration.GetConnectionString("ActivityDb"));
-        });
-        services.AddSingleton<IDbConnectionFactory, PostgreDbConnectionFactory>((serviceProvider) =>
-        {
-            return new PostgreDbConnectionFactory("payment", hostContext.Configuration.GetConnectionString("PaymentDb"));
-        });
-        services.AddSingleton<IOutboxMessagePublisher, OutboxMessagePublisher>();
-        services.AddHostedService<ActivityWorker>();
-        services.AddHostedService<PaymentWorker>();
+            setup.BootstrapServers = builder.Configuration.GetValue<string>("Kafka:BootstrapServers");
+            setup.MessageTimeoutMs = 5000;
+        }, name: "kafka");
 
-        services.AddSingleton<ICustomTracing, CustomTracing>((serviceProvider) =>
-        {
-            return new CustomTracing(hostContext.Configuration.GetValue<string>("Tracing:ActivitySourceName"));
-        });
+var app = builder.Build();
 
-        services.AddOpenTelemetryTracing(options =>
-        {
-            options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("MessageRelayService"));
-            options.SetSampler(new AlwaysOnSampler());
-            options.AddSource(hostContext.Configuration.GetValue<string>("Tracing:ActivitySourceName"));
-            options.AddJaegerExporter(opt =>
-            {
-                opt.AgentHost = hostContext.Configuration.GetValue<string>("Jaeger:Host");
-                opt.AgentPort = hostContext.Configuration.GetValue<int>("Jaeger:Port");
-            });
-        });
-    })
-    .Build();
+app.UseAuthorization();
 
-await host.RunAsync();
+app.MapControllers();
+
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    Predicate = reg => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.Run();

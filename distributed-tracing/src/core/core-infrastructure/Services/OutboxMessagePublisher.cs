@@ -2,7 +2,6 @@
 using core_application.Models;
 using core_domain.Entities;
 using Dapper;
-using OpenTelemetry;
 using System.Diagnostics;
 using System.Text.Json;
 
@@ -56,15 +55,6 @@ namespace core_infrastructure.Services
                     {
                         try
                         {
-                            //var traceHeaders = JsonSerializer.Deserialize<List<MessageHeader>>(relatedOutBoxMessage.TraceContext);
-                            //var parentTraceContext = this._customTracing.ExractTraceContextFromMessageHeaderList(traceHeaders);
-                            //Baggage.Current = parentTraceContext.Baggage;
-
-                            //using (var span = this._customTracing.ActivitySourceInstance.StartActivity($"send message to {toBeSentTopic}", ActivityKind.Producer, parentTraceContext.ActivityContext))
-                            //{
-                            //    await this._eventDispatcher.DispatchEvent(toBeSentTopic, relatedOutBoxMessage.Message);
-                            //}
-
                             var traceHeaders = JsonSerializer.Deserialize<List<MessageHeader>>(relatedOutBoxMessage.TraceContext);
 
                             await this._customTracing.StartActivity($"send message to {toBeSentTopic}", ActivityKind.Producer, traceHeaders, async () =>

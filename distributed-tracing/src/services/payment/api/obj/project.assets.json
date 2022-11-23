@@ -2,6 +2,76 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AspNetCore.HealthChecks.Kafka/6.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Confluent.Kafka": "1.9.3",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.8"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.Kafka.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.Kafka.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.NpgSql/6.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.2",
+          "Npgsql": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.NpgSql.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.NpgSql.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.Redis/6.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.4",
+          "StackExchange.Redis": "2.5.61"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.Redis.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.UI.Client/6.0.5": {
+        "type": "package",
+        "dependencies": {
+          "AspNetCore.HealthChecks.UI.Core": "6.0.5",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.7"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.UI.Client.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.UI.Client.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "AspNetCore.HealthChecks.UI.Core/6.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.7",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.7",
+          "System.Text.Json": "6.0.5"
+        },
+        "compile": {
+          "lib/net6.0/HealthChecks.UI.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/HealthChecks.UI.Core.dll": {}
+        }
+      },
       "Confluent.Kafka/1.9.3": {
         "type": "package",
         "dependencies": {
@@ -347,6 +417,30 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "6.0.8",
+          "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1",
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {}
+        }
+      },
       "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -407,7 +501,7 @@
           "lib/netstandard2.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
         "type": "package",
         "compile": {
           "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
@@ -650,10 +744,10 @@
           "lib/netstandard2.0/OpenTelemetry.Instrumentation.StackExchangeRedis.dll": {}
         }
       },
-      "Pipelines.Sockets.Unofficial/2.2.0": {
+      "Pipelines.Sockets.Unofficial/2.2.2": {
         "type": "package",
         "dependencies": {
-          "System.IO.Pipelines": "5.0.0"
+          "System.IO.Pipelines": "5.0.1"
         },
         "compile": {
           "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {}
@@ -662,10 +756,10 @@
           "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {}
         }
       },
-      "StackExchange.Redis/2.2.4": {
+      "StackExchange.Redis/2.5.61": {
         "type": "package",
         "dependencies": {
-          "Pipelines.Sockets.Unofficial": "2.2.0",
+          "Pipelines.Sockets.Unofficial": "2.2.2",
           "System.Diagnostics.PerformanceCounter": "5.0.0"
         },
         "compile": {
@@ -812,7 +906,7 @@
           }
         }
       },
-      "System.IO.Pipelines/5.0.0": {
+      "System.IO.Pipelines/5.0.1": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.0/System.IO.Pipelines.dll": {}
@@ -906,6 +1000,43 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "System.Text.Encodings.Web/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Text.Encodings.Web.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Encodings.Web.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll": {
+            "assetType": "runtime",
+            "rid": "browser"
+          }
+        }
+      },
+      "System.Text.Json/6.0.5": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Json.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {
@@ -1028,6 +1159,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "AspNetCore.HealthChecks.Kafka": "6.0.3",
+          "AspNetCore.HealthChecks.NpgSql": "6.0.2",
+          "AspNetCore.HealthChecks.Redis": "6.0.4",
+          "AspNetCore.HealthChecks.UI.Client": "6.0.5",
           "Npgsql.OpenTelemetry": "6.0.7",
           "OpenTelemetry.Exporter.Jaeger": "1.4.0-beta.3",
           "OpenTelemetry.Extensions.Hosting": "1.0.0-rc9.9",
@@ -1047,6 +1182,82 @@
     }
   },
   "libraries": {
+    "AspNetCore.HealthChecks.Kafka/6.0.3": {
+      "sha512": "a5LR7wiSRcN6uj1376t+WuDpbrXnkLk448cypU/Zxo1srY3nb+TlcypJZyrdYJmCRXtzfvy9A5/+UIozg8yUqg==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.kafka/6.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.kafka.6.0.3.nupkg.sha512",
+        "aspnetcore.healthchecks.kafka.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.Kafka.dll",
+        "lib/net6.0/HealthChecks.Kafka.xml",
+        "lib/netstandard2.0/HealthChecks.Kafka.dll",
+        "lib/netstandard2.0/HealthChecks.Kafka.xml"
+      ]
+    },
+    "AspNetCore.HealthChecks.NpgSql/6.0.2": {
+      "sha512": "TFCpst67meE/GcOVf1f55PuKtvYKNyvqTZonLO6taEwsONNup0WKbpKf8BaAAa4Oe5epgne+iTd+K3ljL4lYnw==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.npgsql/6.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.npgsql.6.0.2.nupkg.sha512",
+        "aspnetcore.healthchecks.npgsql.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.NpgSql.dll",
+        "lib/net6.0/HealthChecks.NpgSql.xml",
+        "lib/netstandard2.0/HealthChecks.NpgSql.dll",
+        "lib/netstandard2.0/HealthChecks.NpgSql.xml"
+      ]
+    },
+    "AspNetCore.HealthChecks.Redis/6.0.4": {
+      "sha512": "adNNWF6kV8v1HLTmF3b9F5K6ubvgx+S7VqhzA8T/5YuIpRWsCDk8+q3RIDDV8Twvl9pRahLfzCbFrPYxvzmk7g==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.redis/6.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.redis.6.0.4.nupkg.sha512",
+        "aspnetcore.healthchecks.redis.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.Redis.dll",
+        "lib/net6.0/HealthChecks.Redis.xml",
+        "lib/netstandard2.0/HealthChecks.Redis.dll",
+        "lib/netstandard2.0/HealthChecks.Redis.xml"
+      ]
+    },
+    "AspNetCore.HealthChecks.UI.Client/6.0.5": {
+      "sha512": "Ko4CM9lI3ZklTDW3LRtHoiDU/Soo/r3yYRM28jbvOGaN5MjkWYGtVFwkwuNcjLFkJoFxfjqjITf+TWEqNENBzA==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.ui.client/6.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.ui.client.6.0.5.nupkg.sha512",
+        "aspnetcore.healthchecks.ui.client.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.UI.Client.dll",
+        "lib/net6.0/HealthChecks.UI.Client.xml"
+      ]
+    },
+    "AspNetCore.HealthChecks.UI.Core/6.0.5": {
+      "sha512": "CofYy5BJzODAKcZvpAODUhm11M/mtPhIcnGlqMip3H3adzfjpXHDJlbgZNBmua7ds85D+atEBsPvlcR4mQY92g==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.ui.core/6.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.ui.core.6.0.5.nupkg.sha512",
+        "aspnetcore.healthchecks.ui.core.nuspec",
+        "icon.png",
+        "lib/net6.0/HealthChecks.UI.Core.dll",
+        "lib/net6.0/HealthChecks.UI.Core.xml"
+      ]
+    },
     "Confluent.Kafka/1.9.3": {
       "sha512": "xdol/eagNz6hdldqcm7ctjRuRGENJyctFyNmNAX+lgqJ7xXIVQa9c0L9jPaYWeMYg0gSMihtaH950HzDPKnmbg==",
       "type": "package",
@@ -1436,6 +1647,44 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.8": {
+      "sha512": "xRbKuDnoKClu/lC3fCqF5f0UqEqVI8iYJ0RN4XpUHajvcfCWYcFC46NEzaUg2Fub7hznTG9m6XNScrVHl1iaSA==",
+      "type": "package",
+      "path": "microsoft.extensions.diagnostics.healthchecks/6.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "microsoft.extensions.diagnostics.healthchecks.6.0.8.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.8": {
+      "sha512": "8mNPugigemlybm8f+KcwB5FOEyJ8mZ72stKvOJJqpUFYjfTjFDKFKYB2L98gru1SaxVD9akjw8OyvtbWkAEimQ==",
+      "type": "package",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.8.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.abstractions.nuspec"
+      ]
+    },
     "Microsoft.Extensions.FileProviders.Abstractions/6.0.0": {
       "sha512": "0pd4/fho0gC12rQswaGQxbU34jOS1TPS8lZPpkFCH68ppQjHNHYle9iRuHeev1LhrJ94YPvzcRd8UmIuFk23Qw==",
       "type": "package",
@@ -1520,10 +1769,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
-      "sha512": "/HggWBbTwy8TgebGSX5DBZ24ndhzi93sHUBDvP1IxbZD7FDokYzdAr6+vbWGjw2XAfR2EJ1sfKUotpjHnFWPxA==",
+    "Microsoft.Extensions.Logging.Abstractions/6.0.1": {
+      "sha512": "dzB2Cgg+JmrouhjkcQGzSFjjvpwlq353i8oBQO2GWNjCXSzhbtBRUf28HSauWe7eib3wYOdb3tItdjRwAdwCSg==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/6.0.0",
+      "path": "microsoft.extensions.logging.abstractions/6.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1567,7 +1816,7 @@
         "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1912,10 +2161,10 @@
         "opentelemetry.instrumentation.stackexchangeredis.nuspec"
       ]
     },
-    "Pipelines.Sockets.Unofficial/2.2.0": {
-      "sha512": "7hzHplEIVOGBl5zOQZGX/DiJDHjq+RVRVrYgDiqXb6RriqWAdacXxp+XO9WSrATCEXyNOUOQg9aqQArsjase/A==",
+    "Pipelines.Sockets.Unofficial/2.2.2": {
+      "sha512": "Bhk0FWxH1paI+18zr1g5cTL+ebeuDcBCR+rRFO+fKEhretgjs7MF2Mc1P64FGLecWp4zKCUOPzngBNrqVyY7Zg==",
       "type": "package",
-      "path": "pipelines.sockets.unofficial/2.2.0",
+      "path": "pipelines.sockets.unofficial/2.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1931,14 +2180,14 @@
         "lib/netstandard2.0/Pipelines.Sockets.Unofficial.xml",
         "lib/netstandard2.1/Pipelines.Sockets.Unofficial.dll",
         "lib/netstandard2.1/Pipelines.Sockets.Unofficial.xml",
-        "pipelines.sockets.unofficial.2.2.0.nupkg.sha512",
+        "pipelines.sockets.unofficial.2.2.2.nupkg.sha512",
         "pipelines.sockets.unofficial.nuspec"
       ]
     },
-    "StackExchange.Redis/2.2.4": {
-      "sha512": "wM0OuRyRaZTFndFRjIOvas4jjkeclRJsmNm0eAx5tOju3SQisrLubNaSFT/dBypi4Vh1n7nYc1gWpw9L7ernOg==",
+    "StackExchange.Redis/2.5.61": {
+      "sha512": "h1Gz4itrHL/PQ0GBLTEiPK8bBkOp5SFO6iaRFSSn/x1qltBWENsz/NUxPid6WHX9yf2Tiyzn9D3R7mtnksODxg==",
       "type": "package",
-      "path": "stackexchange.redis/2.2.4",
+      "path": "stackexchange.redis/2.5.61",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1952,7 +2201,7 @@
         "lib/netcoreapp3.1/StackExchange.Redis.xml",
         "lib/netstandard2.0/StackExchange.Redis.dll",
         "lib/netstandard2.0/StackExchange.Redis.xml",
-        "stackexchange.redis.2.2.4.nupkg.sha512",
+        "stackexchange.redis.2.5.61.nupkg.sha512",
         "stackexchange.redis.nuspec"
       ]
     },
@@ -2191,10 +2440,10 @@
         "version.txt"
       ]
     },
-    "System.IO.Pipelines/5.0.0": {
-      "sha512": "irMYm3vhVgRsYvHTU5b2gsT2CwT/SMM6LZFzuJjpIvT5Z4CshxNsaoBC1X/LltwuR3Opp8d6jOS/60WwOb7Q2Q==",
+    "System.IO.Pipelines/5.0.1": {
+      "sha512": "qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
       "type": "package",
-      "path": "system.io.pipelines/5.0.0",
+      "path": "system.io.pipelines/5.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2211,7 +2460,7 @@
         "lib/netstandard2.0/System.IO.Pipelines.xml",
         "ref/netcoreapp2.0/System.IO.Pipelines.dll",
         "ref/netcoreapp2.0/System.IO.Pipelines.xml",
-        "system.io.pipelines.5.0.0.nupkg.sha512",
+        "system.io.pipelines.5.0.1.nupkg.sha512",
         "system.io.pipelines.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -2459,6 +2708,87 @@
         "system.security.principal.windows.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.Text.Encodings.Web/6.0.0": {
+      "sha512": "Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
+      "type": "package",
+      "path": "system.text.encodings.web/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Text.Encodings.Web.dll",
+        "lib/net461/System.Text.Encodings.Web.xml",
+        "lib/net6.0/System.Text.Encodings.Web.dll",
+        "lib/net6.0/System.Text.Encodings.Web.xml",
+        "lib/netcoreapp3.1/System.Text.Encodings.Web.dll",
+        "lib/netcoreapp3.1/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.6.0.0.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Json/6.0.5": {
+      "sha512": "SSH+YYrMpvLcy7Orzb5K1tSyffnFacWahyxCCjYH1PbSHdAF4dekmIetBurFKgtTHDmwEe/J2Csi/7niRH6d/g==",
+      "type": "package",
+      "path": "system.text.json/6.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "build/System.Text.Json.targets",
+        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/net6.0/System.Text.Json.dll",
+        "lib/net6.0/System.Text.Json.xml",
+        "lib/netcoreapp3.1/System.Text.Json.dll",
+        "lib/netcoreapp3.1/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.6.0.5.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Threading.Tasks.Extensions/4.5.4": {

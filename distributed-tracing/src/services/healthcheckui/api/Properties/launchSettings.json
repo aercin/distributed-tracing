@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:28667",
+      "applicationUrl": "http://localhost:54561",
       "sslPort": 0
     }
   },
   "profiles": {
-    "MessageRelayService": {
+    "api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "welcome",
-      "applicationUrl": "http://localhost:5128",
+      "launchUrl": "healthchecks-ui",
+      "applicationUrl": "http://localhost:5248",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -22,7 +22,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "welcome",
+      "launchUrl": "healthchecks-ui",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
